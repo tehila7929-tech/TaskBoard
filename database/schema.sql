@@ -32,13 +32,13 @@ CREATE TABLE posts (
 -- טבלת תגובות
 CREATE TABLE comments (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    postId INT NOT NULL,
-    userId INT NOT NULL, -- העמודה החדשה
+    post_id INT NOT NULL,
+    user_id INT NOT NULL, -- העמודה החדשה
     name VARCHAR(100),
     email VARCHAR(100),
     body TEXT,
-    FOREIGN KEY (postId) REFERENCES posts(id) ON DELETE CASCADE,
-    FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE -- הקישור החדש
+    FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE -- הקישור החדש
 );
 
 -- טבלת משימות

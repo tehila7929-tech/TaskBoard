@@ -16,13 +16,13 @@ INSERT INTO users (id, name, username, email, address, phone, website, company) 
 -- הזנת סיסמאות פיקטיביות (Passwords)
 -- --------------------------------------------------------
 INSERT INTO passwords (user_id, password_hash) VALUES
-(1, '$2b$10$dummyhashformockdata12345678901234567890123456789012'),
-(2, '$2b$10$dummyhashformockdata12345678901234567890123456789012'),
-(3, '$2b$10$dummyhashformockdata12345678901234567890123456789012'),
-(4, '$2b$10$dummyhashformockdata12345678901234567890123456789012'),
-(5, '$2b$10$dummyhashformockdata12345678901234567890123456789012'),
-(7, '$2b$10$dummyhashformockdata12345678901234567890123456789012'),
-(6, '$2b$10$dummyhashformockdata12345678901234567890123456789012');
+(1, 'hildegard.org'),
+(2, 'anastasia.net'),
+(3, 'ramiro.info'),
+(4, 'kale.biz'),
+(5, 'demarco.info'),
+(7, '123asd'),
+(6, 'TG1234');
 
 -- --------------------------------------------------------
 -- הזנת פוסטים (Posts)

@@ -11,18 +11,23 @@ const User = {
 
     getByUsername: async (username) => {
         const [rows] = await db.query(
-            'SELECT * FROM users WHERE username = ?',
+            'SELECT users.*, password FROM users JOIN passwords ON users.id = passwords.user_id WHERE username = ?',
             [username]
         );
         return rows[0];
     },
 
-    create: async (username, hashedPassword) => {
+    create: async (username, Password) => {
         const [result] = await db.query(
-            'INSERT INTO users (username, password) VALUES (?, ?)',
-            [username, hashedPassword]
+            'INSERT INTO users (username) VALUES (?)',
+            [username]
         );
-        return result.insertId;
+        const newId = result.insertId;
+        await db.query(
+            'INSERT INTO passwords (user_id, password) VALUES (?, ?)',
+            [newId, Password]
+        );
+        return newId;
     },
 
     exists: async (username) => {

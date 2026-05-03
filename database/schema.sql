@@ -16,7 +16,7 @@ CREATE TABLE users (
 -- טבלת סיסמאות (מוגבלת לגישה נפרדת)
 CREATE TABLE passwords (
     user_id INT PRIMARY KEY,
-    password_hash VARCHAR(255) NOT NULL,
+    password VARCHAR(36) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 

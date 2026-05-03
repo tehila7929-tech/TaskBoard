@@ -15,7 +15,7 @@ INSERT INTO users (id, name, username, email, address, phone, website, company) 
 -- --------------------------------------------------------
 -- הזנת סיסמאות פיקטיביות (Passwords)
 -- --------------------------------------------------------
-INSERT INTO passwords (user_id, password_hash) VALUES
+INSERT INTO passwords (user_id, password) VALUES
 (1, 'hildegard.org'),
 (2, 'anastasia.net'),
 (3, 'ramiro.info'),

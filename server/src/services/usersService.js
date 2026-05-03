@@ -38,6 +38,18 @@ const UsersService = {
     checkUserExists: async (userId) => {
         const user = await User.getById(userId);
         return !!user;
+    },
+
+    register: async (username, password) => {
+        if (!username || !password) throw new Error('Username and password are required');
+        const alreadyExists = await User.exists(username);
+        if (alreadyExists) throw new Error('Username already taken');
+        const newId = await User.create(username, password);
+        return { id: newId, username };
+    },
+
+    checkUsernameExists: async (username) => {
+        return await User.exists(username);
     }
 };
 

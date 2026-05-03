@@ -3,7 +3,7 @@ const db = require('../config/db');
 const User = {
     getById: async (id) => {
         const [rows] = await db.query(
-            'SELECT id, username, created_at FROM users WHERE id = ?',
+            'SELECT id, username FROM users WHERE id = ?',
             [id]
         );
         return rows[0];

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const CommentController = require('../controllers/commentController');
+const CommentController = require('../controllers/commentsController');
 
 // --- הגדרת הראוטים ---
 

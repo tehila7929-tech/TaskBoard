@@ -2,7 +2,7 @@ const PostService = require('../services/postsService');
 
 const PostController = {
 
-    getPostsBtId: async (req, res) => {
+    getUserPosts: async (req, res) => {
         try {
             const userId = req.params.userId;
             const posts = await PostService.getUserPosts(userId);

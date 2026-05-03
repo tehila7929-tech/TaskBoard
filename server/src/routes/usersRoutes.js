@@ -1,20 +1,24 @@
 const express = require('express');
 const router = express.Router();
 const UserController = require('../controllers/usersController');
+const auth = require('../middlewares/authMiddleware'); // 1. ייבוא המידלוודר
 
-// כאשר מגיעה בקשת POST לכתובת /login, הפעל את הפונקציה login מהקונטרולר
+// --- נתיבים ציבוריים (ללא בדיקת טוקן) ---
+
+// התחברות והרשמה חייבות להיות פתוחות לכולם
 router.post('/login', UserController.login);
-
-// נתיב לקבלת מידע מלא על משתמש
-router.get('/info/:userId', UserController.getUserInfo);
-
-// נתיב רק לבדיקה אם המשתמש קיים
-router.get('/exists/:userId', UserController.checkUserExists);
-
-// רישום משתמש חדש
 router.post('/register', UserController.register);
 
-// בדיקה אם שם משתמש תפוס
+// בדיקה אם שם משתמש תפוס (בדרך כלל פתוח כדי לעזור למשתמש בזמן ההרשמה)
 router.get('/exists/username/:username', UserController.checkUsernameExists);
+
+
+// --- נתיבים מוגנים (עם בדיקת טוקן) ---
+
+// רק משתמש מחובר יכול לקבל מידע על משתמש
+router.get('/info/:userId', auth, UserController.getUserInfo); 
+
+// בדיקה אם משתמש קיים (אם זה חלק מחיפוש פנימי באפליקציה, כדאי להגן על זה)
+router.get('/exists/:userId', auth, UserController.checkUserExists);
 
 module.exports = router;

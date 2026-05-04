@@ -12,7 +12,7 @@ const Todo = {
     create: async (userId, title) => {
         const [result] = await db.query(
             'INSERT INTO todos (user_id, title, completed) VALUES (?, ?, ?)',
-            [userId, title, false] 
+            [userId, title, false]
         );
         return result.insertId;
     },

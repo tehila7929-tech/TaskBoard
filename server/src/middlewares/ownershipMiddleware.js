@@ -17,7 +17,6 @@ const checkPostOwnership = async (req, res, next) => {
 
         next();
     } catch (error) {
-        console.error('Error in checkPostOwnership:', error);
         res.status(500).json({ message: 'שגיאת שרת פנימית בעת בדיקת הרשאות.' });
     }
 };
@@ -39,7 +38,6 @@ const checkCommentOwnership = async (req, res, next) => {
 
         next();
     } catch (error) {
-        console.error('Error in checkCommentOwnership:', error);
         res.status(500).json({ message: 'שגיאת שרת פנימית בעת בדיקת הרשאות.' });
     }
 };

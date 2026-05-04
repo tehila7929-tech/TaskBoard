@@ -56,10 +56,6 @@ export default function Home() {
                             <h4>📄 Posts</h4>
                             <p>Share your thoughts and ideas</p>
                         </Link>
-                        <Link to={`/users/${currentUser.id}/albums`} className="home-card">
-                            <h4>📸 Albums</h4>
-                            <p>Browse and organize your photos</p>
-                        </Link>
                     </div>
                 </div>
             </div>

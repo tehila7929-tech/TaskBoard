@@ -1,33 +1,25 @@
-const Todo = require('../models/todosModel'); // ודא שהנתיב תואם למיקום הקובץ שלך
+const Todo = require('../models/todosModel');
 
 const TodoService = {
-    // שליפת כל המשימות של משתמש
     getUserTodos: async (userId) => {
         if (!userId) throw new Error('User ID is required');
         return await Todo.getByUserId(userId);
     },
 
-    // יצירת משימה חדשה
     createTodo: async (userId, title) => {
         if (!userId) throw new Error('User ID is required');
         if (!title || title.trim() === '') throw new Error('Title cannot be empty');
-
         const insertId = await Todo.create(userId, title);
         return { id: insertId, userId, title, completed: false };
     },
 
-    // עדכון משימה
     updateTodo: async (userId, todoId, updatedData) => {
         if (!todoId) throw new Error('Todo ID is required');
-
         const affectedRows = await Todo.update(userId, todoId, updatedData);
-        if (affectedRows === 0) {
-            throw new Error('Todo not found or not authorized to update');
-        }
+        if (affectedRows === 0) throw new Error('Todo not found or not authorized to update');
         return { success: true, message: 'Todo updated successfully' };
     },
 
-    // מחיקת משימה
     deleteTodo: async (todoId) => {
         if (!todoId) throw new Error('Todo ID is required');
         const affectedRows = await Todo.delete(todoId);

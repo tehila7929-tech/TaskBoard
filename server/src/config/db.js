@@ -1,7 +1,6 @@
 const mysql = require('mysql2');
 require('dotenv').config();
 
-// יצירת חיבור מסוג Pool - מומלץ כדי לנהל חיבורים מרובים ביעילות
 const pool = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -12,13 +11,10 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
-// שימוש בהבטחות (Promises) כדי שנוכל להשתמש ב- async/await
 const promisePool = pool.promise();
 
-// בדיקת התחברות ראשונית
 promisePool.getConnection()
     .then(connection => {
-        console.log('Connected to MySQL database smoothly!');
         connection.release();
     })
     .catch(err => {

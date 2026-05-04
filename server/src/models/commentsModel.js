@@ -11,16 +11,11 @@ const commment = {
     },
 
     create: async (postId, userId, name, email, body) => {
-        try {
-            const [result] = await db.query(
-                'INSERT INTO comments (post_id, user_id, name, email, body) VALUES (?, ?, ?, ?, ?)',
-                [postId, userId, name, email, body]
-            );
-            return result.insertId;
-        } catch (err) {
-            console.error('DB error in createComment:', err.message);
-            throw err;
-        }
+        const [result] = await db.query(
+            'INSERT INTO comments (post_id, user_id, name, email, body) VALUES (?, ?, ?, ?, ?)',
+            [postId, userId, name, email, body]
+        );
+        return result.insertId;
     },
 
     update: async (userId, commentId, updatedData) => {

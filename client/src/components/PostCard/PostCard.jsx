@@ -17,16 +17,7 @@ export default function PostCard({ post, deletePost, updatePost, author }) {
     };
 
     const handleDelete = async () => {
-        try {
-            const res = await axios.get(`http://localhost:3000/comments?postId=${post.id}`);
-            const comments = res.data;
-            await Promise.all(comments.map(c =>
-                axios.delete(`http://localhost:3000/comments/${c.id}`)
-            ));
-            deletePost();
-        } catch (err) {
-            console.error(err);
-        }
+        deletePost();
     }
 
     const getAvatarColor = (name) => {

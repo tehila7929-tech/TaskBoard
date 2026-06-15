@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const PostController = require('../controllers/postsController');
 const { checkPostOwnership } = require('../middlewares/ownershipMiddleware');
-// --- שליפה ---
-// כל הפוסטים
+
 router.get('/', PostController.getAllPosts);
 router.post('/', PostController.createPost);
 router.patch('/:id', PostController.updatePost);

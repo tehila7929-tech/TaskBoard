@@ -5,7 +5,9 @@ export const useResource = (resourceName, queryParams = {}) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    //const PORT = process.env.PORT || 3000;
 
+    //const baseUrl = `http://localhost:${PORT}/${resourceName}`;
     const baseUrl = `http://localhost:3000/${resourceName}`;
 
     const fetchData = async (newParams = {}, shouldAppend = false) => {
